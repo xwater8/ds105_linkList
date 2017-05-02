@@ -19,7 +19,12 @@ void release_linked_list(struct node **head)
 
 int size(struct node *head) // return the number of nodes in a linked list
 {
-	// insert your code 
+	int num = 0;
+	while (head)
+	{
+		num++;
+	}
+	return num;
 }
 
 // insert a new node after trail
