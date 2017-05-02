@@ -20,10 +20,6 @@ void release_linked_list(struct node **head)
 
 int size(struct node *head) // return the number of nodes in a linked list
 {
-<<<<<<< HEAD
-	// insert your code
-	return 0;
-=======
 	int num = 0;
 	while (head)
 	{
@@ -31,7 +27,6 @@ int size(struct node *head) // return the number of nodes in a linked list
 		head = head->link;
 	}
 	return num;
->>>>>>> e4323e3d69f6e00de6d79b59be3dca019147e4b2
 }
 
 // insert a new node after trail
@@ -62,28 +57,31 @@ void linked_list_insert(struct node **head, struct node* trail, int data)
 // delete all nodes with data=k
 void linked_list_delete_data(struct node **head, int k)
 {
-	node *temp = *head;
-	node *after = temp->link;
-	node *before;
-	while (temp)
+	node *now = *head;
+	node *before = NULL;
+
+	while (now != NULL)
 	{
-		if (temp->data != k)
+		if (now->data != k)
 		{
-			before = temp;
-			temp = temp->link;
-			after = temp->link;
-			before->link = after;
+			before = now;
+			now = now->link;
 		}
 		else
 		{
-			if (temp == *head)
+			if (now == *head)
 			{
-				free(*head);
-				*head = after;
+				node *temp = now->link;
+				free(now);
+				now = temp;
+				*head = temp;
 			}
 			else
 			{
-
+				node *temp = now->link;
+				free(now);
+				now = temp;
+				before->link = now;
 			}
 		}
 	}
