@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h> 
 #include<stdlib.h> 
 
@@ -19,7 +20,8 @@ void release_linked_list(struct node **head)
 
 int size(struct node *head) // return the number of nodes in a linked list
 {
-	// insert your code 
+	// insert your code
+	return 0;
 }
 
 // insert a new node after trail
@@ -56,6 +58,23 @@ void linked_list_delete_data(struct node **head, int k)
 void linked_list_reverse_data(struct node **head)
 {
 	// insert your code
+	struct node* previous, *current, *preceding;
+
+	previous = *head;
+	current = previous->link;
+	(*head)->link = NULL;
+
+	while (current != NULL)
+	{
+		preceding = current->link;
+		current->link = previous;
+		previous = current;
+		current = preceding;
+	}
+
+	*head = previous;
+
+
 }
 // return a node with data == k
 
